@@ -7,6 +7,12 @@
 3. This project uses Java 17 
 4. To test, please follow the Curl section
 
+## Technologies
+1. Spring Boot
+2. Muserver
+3. H2 Database
+4. Java 17
+
 ## Curls
 
 ``` To set up total number of tables
