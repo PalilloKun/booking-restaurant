@@ -34,7 +34,15 @@ public class BookingController {
     private AvailableTableService availableTableService;
 
     private Gson gson = new Gson();
-    ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());;
+    ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+
+    /**
+     * Method to create a booking, this method validate if the available tables are enough to booking
+     * the specif tableSize input, and also validate the same Client can't book in the same hour again
+     * @param request
+     * @param response
+     * @param pathParams
+     */
     public void createBookingHandler(MuRequest request, MuResponse response, Map<String, String> pathParams) {
         try {
 
@@ -74,6 +82,12 @@ public class BookingController {
         }
     }
 
+    /**
+     * Method to get all booking on a specific day
+     * @param request
+     * @param response
+     * @param pathParams
+     */
     public void getBookingsForDay(MuRequest request, MuResponse response, Map<String, String> pathParams) {
         try {
             String dateStr = pathParams.get("date");
@@ -105,13 +119,25 @@ public class BookingController {
         }
     }
 
+    /**
+     * Method to get all bookings
+     * @param request
+     * @param response
+     * @param pathParams
+     * @throws JsonProcessingException
+     */
     public void getAllBookings(MuRequest request, MuResponse response, Map<String, String> pathParams)
             throws JsonProcessingException {
         List<Booking> bookings = bookingService.getAll();
         response.write(Utils.convertToString(bookings));
     }
 
-    public boolean validateExistingBooking(Booking booking){
+    /**
+     * Method to validate if the Client has booked at the same time again
+     * @param booking
+     * @return
+     */
+     boolean validateExistingBooking(Booking booking){
 
         List<Booking> bookingList = bookingService.getAll();
         log.error("bookingList total {}",bookingList.size());

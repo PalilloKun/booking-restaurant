@@ -13,10 +13,20 @@ public class ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    /**
+     * Method to call Respository and create new Client
+     * @param client
+     */
     public void createClient(Client client){
         clientRepository.save(client);
     }
 
+    /**
+     * Method to call Respository and get client by Id
+     * @param byId
+     * @return
+     */
     public Client getClientById(Long byId){
         return clientRepository.findById(byId).orElse(new Client());
     }

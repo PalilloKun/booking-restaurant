@@ -10,6 +10,13 @@ import java.util.List;
 
 public  class Utils {
 
+    /**
+     * Method to convert Java Object to string
+     * @param t
+     * @return
+     * @param <T>
+     * @throws JsonProcessingException
+     */
 
     public static <T> String convertToString(T t) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -17,6 +24,14 @@ public  class Utils {
 
         return s;
     }
+
+    /**
+     * Method to convert List of Java Object to string
+     * @param t
+     * @return
+     * @param <T>
+     * @throws JsonProcessingException
+     */
 
     public static <T> String convertListToString(List<T> t) throws JsonProcessingException {
 

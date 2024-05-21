@@ -25,6 +25,14 @@ public class ReservedTablesController {
     private AvailableTableService availableTableService;
 
     ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());;
+
+    /**
+     * Method to insert the initial value of tables
+     * @param request
+     * @param response
+     * @param pathParams
+     * @throws IOException
+     */
     public void updateTotalTables(MuRequest request, MuResponse response, Map<String, String> pathParams) throws IOException {
 
         AvailableTable availableTable = objectMapper.readValue(request.readBodyAsString(), AvailableTable.class);

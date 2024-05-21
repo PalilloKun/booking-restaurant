@@ -13,6 +13,11 @@ public class AvailableTableService {
 
     @Autowired
     private AvailableTableRepository availableTableRepository;
+
+    /**
+     * Methodo to call Respository and update/insert the initial value for tables
+     * @param availableTable
+     */
     public void updateAvailableTable(AvailableTable availableTable){
 
         log.error("availableTable 1 {}",availableTable);
@@ -20,6 +25,10 @@ public class AvailableTableService {
 
     }
 
+    /**
+     * Method to get the current available tables
+     * @return
+     */
     public int getAvailableTables(){
         return availableTableRepository
                 .findById(1L)

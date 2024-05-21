@@ -20,12 +20,21 @@ public class BookingService {
     private BookingRepository bookingRepository;
 
 
+    /**
+     * Method to call Respository and create new Booking
+     * @param booking
+     */
     public void addBooking(Booking booking) {
 
         bookingRepository.save(booking);
 
     }
 
+    /**
+     * Method to call Respository and get all Bookings, get all bookings in specific date
+     * @param date
+     * @return
+     */
     public List<Booking> getBookingsForDay(LocalDate date) {
 
         List<Booking> findAll = StreamSupport.stream(bookingRepository.findAll().spliterator(), false)

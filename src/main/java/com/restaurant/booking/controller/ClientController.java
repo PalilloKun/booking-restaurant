@@ -28,6 +28,13 @@ public class ClientController {
 
     ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());;
 
+    /**
+     * Method to create new Client
+     * @param request
+     * @param response
+     * @param pathParams
+     * @throws IOException
+     */
     public void createClient(MuRequest request, MuResponse response, Map<String, String> pathParams)
             throws IOException {
         Client client = objectMapper.readValue(request.readBodyAsString(), Client.class);
@@ -41,6 +48,13 @@ public class ClientController {
         response.write(Utils.convertToString(responseClient));
     }
 
+    /**
+     * Method to get Client by Id from Service
+     * @param request
+     * @param response
+     * @param pathParams
+     * @throws JsonProcessingException
+     */
     public void getClientById(MuRequest request, MuResponse response, Map<String, String> pathParams) throws JsonProcessingException {
 
         Long byId = Long.valueOf(pathParams.get("byId"));
